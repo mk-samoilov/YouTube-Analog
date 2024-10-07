@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+MkTube - Register
+{% endblock %}
+
+{% block right_links %}
+{% if user %}
+    <a href="/profile">Profile</a>
+    <a href="/logout">Logout</a>
+{% else %}
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if message %}
+    <div class="container">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+<div class="container">
+    <h2>Register</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
+        </div>
+
+        <button type="submit" class="btn">Register</button>
+    </form>
+    <div class="text-center">
+        <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+</div>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reg_and_login.css') }}">
+{% endblock %}

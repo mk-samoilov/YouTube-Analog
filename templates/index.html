@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+MkTube
+{% endblock %}
+
+{% block right_links %}
+{% if user %}
+<a href="/profile">Profile</a>
+<a href="/logout">Logout</a>
+{% else %}
+<a href="/register">Register</a>
+<a href="/login">Login</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="videos">
+    {% for video in videos %}
+    <div class="video">
+        <a href="/video/{{ video.id|string }}">
+            <img src="{{ url_for('static', filename='previews/' + video.id|string + '.png') }}" alt="">
+            <h3 class="name" style="color: white;">{{ video.name }}</h3>
+            <p class="author_name" style="color: white;">{{ video.author_name }}</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}

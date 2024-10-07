@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="header">
+        <a href="/">MkTube</a>
+        <div class="right-links">
+            {% block right_links %}
+            {% endblock %}
+        </div>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <link type="text/css" href="{{ url_for('static', filename='css/general.css') }}" rel="stylesheet">
+</body>
+</html>
